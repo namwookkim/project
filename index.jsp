@@ -1,4 +1,5 @@
 ﻿<%@page language="java" contentType="text/html; charset=utf-8" %>
 <HTML>
-<%=request.getRemoteAddr()%>
+Your IP Address is <%=request.getRemoteAddr()%>
+hello
 </HTML>
