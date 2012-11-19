@@ -1,3 +1,4 @@
+﻿<%@language="java" contentType="text/html; charset=utf-8" %>
 <HTML>
-Hello World!
+<%=request.getRemoteAddr()%>
 </HTML>
