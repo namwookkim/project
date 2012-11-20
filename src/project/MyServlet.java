@@ -30,7 +30,8 @@ public class MyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html");
+		//request.getRequestDispatcher("/index.jsp").forward(request, response);
+		//response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("Hello World");
 	}
