@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello Eclipse</title>
+<title>Nodus Main Page</title>
 </head>
 <body>
 Hello JSP Test
