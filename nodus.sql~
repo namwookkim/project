@@ -41,10 +41,9 @@ CREATE TABLE Node (
 );
 
 CREATE TABLE Edge (
-	from_id INT NOT NULL,
-	to_id INT NOT NULL,
+	from_id INT NOT NULL PRIMARY KEY,
+	to_id INT NOT NULL PRIMARY KEY,
 	created_at DATETIME NOT NULL
-	PRIMARY KEY (from_id, to_id)
 );
 
 CREATE TABLE Talk (
