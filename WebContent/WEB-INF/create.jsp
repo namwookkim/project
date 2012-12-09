@@ -75,7 +75,9 @@ a,img{border: none;	position: relative;top:20px}
 		<div id="content_line">
 		<div id="join_success">
 		<p class="cong"> "<%=subject%>"방이 생성되었습니다</p>
-		
+		<a href="./library/minmap_lib.html">
+			<img src="./images/session_join_button.png">
+		</a>
 		</div>
 		</fieldset>
 <%

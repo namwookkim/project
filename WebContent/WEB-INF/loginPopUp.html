@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<HEAD>
+<meta charset="utf-8">
+<TITLE> 로그인 팝업 </TITLE>
+  <meta name="title" content="Nodus">
+  <meta name="author" content="박소현" />
+  <meta name="keywords" content="mindmap" />
+  <meta name="description" content="loginPopup" />
+<script type="text/javascript" language="javascript">
+  function doSubmit(){
+  var frm = document.getElementsByName("form")[0];
+  if(frm.userId.value == '') {
+  alert('아이디를 입력해 주세요');
+  frm.userId.focus();
+  return;
+  }
+  
+  if(frm.userPassword.value == '') {
+  alert('비밀번호를 입력해 주세요.');
+  frm.userPassword.focus();
+  }
+
+  frm.method = "post";
+  frm.action = "loginDB.jsp";
+  frm.submit(); 
+
+  
+  }
+
+  function join(){
+    location.href('join.html');
+    }
+
+  function doExit(){
+  window.close();
+  }
+  
+</SCRIPT> 
+<style type="text/css">
+.join_button{
+  background:url("./images/join_button.png") no-repeat;
+  border:none;
+  width: 72px; height: 20px;
+
+}
+.login_button{
+  background:url("./images/login_button.png") no-repeat;
+  border:none;
+  width: 72px; height: 20px;
+  
+}
+.exit_button{
+  background:url("./images/exit_button.png") no-repeat;
+  border:none;
+  width: 72px; height: 20px;
+  
+}
+p.first{font-size:12px; font-family:돋움, dotum, verdana, sans-serif; text-align: center; color: #666666;}
+p.seccond{font-size:12px; font-family:돋움, dotum, verdana, sans-serif; text-align: center; color: #000000; font-weight: bold;}
+
+.loginbox{
+  background-color: #f7f7f7;
+  width: 340px; height: 100px;
+  position: absolute;
+  top:137px;left: 30px;
+}
+.buttonbox{
+  position:absolute;
+  top:250px; left: 90px;
+}
+</style>
+</HEAD>
+
+<BODY>
+
+<!-- contents -->
+
+  <form action="#" class="floatleft" name="form" method="post">
+  <fieldset style="height:260px">
+    <img src="./images/login_box.png"></br>
+    <img src="./images/bar.png">
+
+    </br>
+
+    <p class="first"> Nodus에 오신것을 환영합니다.</p>
+    <p class="seccond">즐거운 사용을 위해 로그인 해주시기 바랍니다.</p>
+    <div class="loginbox">
+    </br>
+    <img src="./images/email_text.png"><input type="text" id="userId" name="userId" style="width:187px; height:18px;"/></br>
+    <img src="./images/pwd_text.png"><input type="password" id="userPassword" name="userPassword" style="width:187px; height:18px;"/></br>
+
+    </div>
+    <div class="buttonbox">
+    <input type="button" class="join_button" onclick="join(); return false;"/>
+    <input type="button" class="login_button" onclick="doSubmit(); return false;" />
+    <input type="button" class="exit_button" onclick="doExit(); return false;"/>
+    </div>
+  </fieldset>
+  </form>
+
+<!--// contents -->
+
+
+</BODY>
+</html>

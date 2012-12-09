@@ -1,4 +1,4 @@
-	 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.sql.*" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -13,7 +13,7 @@
 <meta name="description" content="join.jsp" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8/">
-<title>방 생성</title>
+<title>회원가입 여부 확인 팝업</title>
 
 <style type="text/css">
 #join_succ_box{
@@ -37,16 +37,9 @@ a,img{border: none;	position: relative;top:20px}
 
 	request.setCharacterEncoding("utf-8");
 
-	String subject = request.getParameter("subject");
-	int member = Integer.parseInt(request.getParameter("member"));
-	String intro = request.getParameter("intro"); 
-	boolean is_public;
-
-	if(request.getParameter("selec").equals("공개")){
-		is_public = true;
-	}else{
-		is_public = false;
-	}
+	String name = request.getParameter("name");
+	String id = request.getParameter("id");
+	String passwd = request.getParameter("pwd2"); 
 
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -60,13 +53,13 @@ a,img{border: none;	position: relative;top:20px}
 
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection(JDBC_URL, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
-		String sql = "insert into Session(title,is_public,max_users,summary,start_node_id,created_at) values(?,?,?,?,1,now())"; 
+		String sql = "insert into User values(?,?,?,?,now())"; 
 		
 		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, subject);
-		pstmt.setBoolean(2, is_public);
-		pstmt.setInt(3, member);
-		pstmt.setString(4, intro);
+		pstmt.setString(1, id);
+		pstmt.setString(2, passwd);
+		pstmt.setString(3, name);
+		pstmt.setInt(4, 0);
 		//pstmt.setString(5, "2012-12-09 12:00:00");
 		pstmt.executeUpdate();
 %>
@@ -74,8 +67,11 @@ a,img{border: none;	position: relative;top:20px}
 		<div id="join_succ_box">
 		<div id="content_line">
 		<div id="join_success">
-		<p class="cong"> "<%=subject%>"방이 생성되었습니다</p>
-		
+		<p class="cong"> "<%=name%>"님의 회원가입을
+		 축하드립니다.</p>
+		<a href="./test.jsp">
+			<img src="./images/home_button.png">
+		</a>
 		</div>
 		</fieldset>
 <%
