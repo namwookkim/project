@@ -55,7 +55,7 @@
 		<!--
 			var numOfNodes = 0;
 			var nodeArray = new Array();
-			var selectedNode = -1;
+			var oldSelectedNode = -1, selectedNode = -1;
 
 			// initialize
 			// 가운데에 메인 노드를 만드는 함수
@@ -161,8 +161,7 @@
 				var wb = $("div.whiteboard");
 				var sc = $("div.svg_container");
 				
-				alert( wb.width() );
-				sc.css("width", wb.width() + "px").height("height", wb.height() + "px");
+				sc.css("width", wb.innerWidth() + "px").height("height", wb.innerHeight() + "px");
 			}
 
 			function recalculate(pathObject) {
@@ -204,13 +203,23 @@
 			function nodeClicked() {
 				if(selectedNode > 0) nodeArray[ selectedNode ].css("border", "0");
 				var thisObject = $(this);
-				thisObject.css("border","3px solid blue");
-				selectedNode = thisObject.attr("__nodeIndex");
+				if(selectedNode != thisObject.attr("__nodeIndex")) {
+					thisObject.css("border", "3px solid blue");
+					selectedNode = thisObject.attr("__nodeIndex");
+				} else selectedNode = -1;
 			}
 
 			$(function($) {
 				disableDefaultRightButton();
 
+//				$("div.whiteboard").click(function(evt) {
+//					if(selectedNode > 0 && oldSelectedNode == selectedNode) {
+//						nodeArray[selectedNode].css("border", "0px");
+//						selectedNode = -1;
+//					}
+//					oldSelectedNode = selectedNode;
+//				});
+				
 				$("div.whiteboard").dblclick(function(evt) {
 					if(selectedNode > 0) {
 						addNode( selectedNode, "add", "description 2", evt.pageX - $("div.whiteboard").offset().left, evt.pageY - $("div.whiteboard").offset().top );
