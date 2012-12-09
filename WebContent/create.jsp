@@ -18,8 +18,8 @@
 <script type="text/javascript">
 function golib(){
 	window.close();
-	opener.location.href("/library/mindmap_lib.html");
-}
+	opener.location.href("library/mindmap_lib.html");
+} //여기서 연결해준거거든? 근데 왜 안될까
 </script>
 <style type="text/css">
 #join_succ_box{
