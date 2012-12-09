@@ -1,0 +1,392 @@
+#mainTitleEditor {
+			height:144px;
+	}
+
+#mainTitle {
+			height:144px;
+	}
+
+/* border height */
+
+.titleLink {
+			height: 144px;
+	}
+
+#titleBackground {
+			height: 144px;
+			background-color: #3b5998;
+			background-image: url("./images/title_background.png");
+			background-repeat: no-repeat;
+			opacity: 1.0; 
+			border-style: none;
+			border-width: 1px;
+			border-color: #000000;
+			background-position: left top;
+			border: none !important;
+}
+
+* html #titleBackground {
+				}
+
+.containerforWrite #titleBackground { 
+						background-image:none;
+			}
+
+* html .containerforWrite #titleBackground {
+				}
+
+/* Blog Name */
+#titleBlogName { top: 60px; left: 30px; }
+#titleBlogName img { 
+	width: 157px; height: 46px;
+	background-image: none;
+	background-repeat: no-repeat;
+	}
+
+/* Blog Desc */
+#titleBlogDesc { top: 0px; left: 0px; }
+#titleBlogDesc img { 
+	width: 1px; height: 1px;
+	}
+
+/** Title Menu *******************************************************/
+#titleMenu { top: 107px; left: 0px; }
+
+ /* bar type */
+	#titleMenuBg { 
+		background-color: #F1F1F1;
+		background-image: none;
+		opacity: 0.65;
+		filter:alpha(opacity=65);
+	}
+	
+	* html #titleMenuBg {
+		filter:alpha(opacity=65);
+							
+	}
+	
+	.containerforWrite #titleMenuBg {
+		background-image: none;
+	}
+	* html .containerforWrite #titleMenuBg {
+		filter:alpha(opacity=65);
+							
+	}
+	
+	#titleMenu li.mbar { color: #333333; }
+	#titleMenu li a { color: #333333; }
+	/* select image */
+		#titleMenu li.on a  { color: ; }
+	
+
+/** Background Color *******************************************************/
+	body {
+			background-image: none;
+			background-repeat: repeat;
+			background-color: #817E7E;
+			} 
+
+/** Background Image *******************************************************/
+#wrap, #wrap2 {
+	background-image: none;
+	background-color: #ffffff;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+/** Frame Color *******************************************************/
+.container {
+		background-color:transparent;
+		padding: 7px 7px;
+		background-image: none;
+		border-style: none;
+		border-width: 0px;
+		padding: 0 7px;
+		border: none !important;
+	}
+
+.containerforWrite {
+		background-color: transparent;
+		padding: 7px 7px;
+		background-image: none;
+		border-style: none;
+		border-width: 0;
+		padding: 0 7px;
+		border: none !important;
+	}
+
+/** Frame Image *******************************************************/
+.containerTop {  
+						background-image: none;
+						height: 0px;
+	}
+.containerTopforWrite {  
+						background-image: none;
+						height: 0px;
+	}
+
+.containerBot {  
+						background-image: none;
+						height: 0px;
+	}
+
+.containerBotforWrite {  
+						background-image: none;
+						height: 0px;
+	}
+
+/** Article *******************************************************/
+.contBgColor { 
+			background-color:#FFFFFF;
+	}
+
+#cContentWriteArea { background-color:#ffffff; }
+#cContentWriteArea span.g_999 { color:#999; }
+
+
+
+	.cContentOuter { background: #ffffff; }
+	.cContentinner { background: #edeff4; }
+	.cContentBox {
+				border-style: none;
+				border-width: 0px;
+				border-color: #000000;
+				border: none !important;
+		}
+
+/* text title */
+#cContent .cB_Title, #cContent .cB_Title a, #cContent .cB_Title a:hover, #cContent .cB_Title a:link, #cContent .cB_Title a:visited { 
+			color: #333333;
+	}
+
+#cContent .titleColor, #cContent .titleColor a, #cContent .titleColor a:hover, #cContent .titleColor a:link, #cContent .titleColor a:visited { 
+			color: #333333;
+	}
+
+#contentArea .BasicA .cB_Title, #contentArea .WebDView .cB_Title, #contentArea .GalC .cB_Title {
+				font-size: 16px;
+	}
+
+.cB_Amp, .cB_Amp a, .cB_Amp a:hover, a.cB_Amp, a.cB_Amp:hover, #cContent .cB_Amp, #cContent span.cB_Amp, #cContent .cB_Amp a, #cContent .cB_Amp a:hover, #cContent a.cB_Amp, #cContent a.cB_Amp:hover, #contentArea span.cB_Amp, #contentArea a.cB_Amp, #contentArea a.cB_Amp:hover {
+			color:#333333;
+	}
+
+.contColor, a.contColor:link, a.contColor:visited, a.contColor:hover, a.contColor:active,
+#cS_mainTitle h2, #contentArea, #contentArea a, #contentArea a:hover, #contentArea span, #contentArea div, #contentArea th, #contentArea td, #contentArea li,
+#wrapSideMenu, #wrapSideMenu a, #wrapSideMenu a:hover, #wrapSideMenu span, #wrapSideMenu div, #wrapSideMenu th, #wrapSideMenu td, #wrapSideMenu li,
+#cNumbering *, #preNextBox * {
+			color: #333333;
+	}
+
+.headLine, .tdLine, .LasttdLine, .postBorder, .cCont_lineBasicClr, .cCont_line, .cContTitleLine, .cContBotLine, .cBlogBoxbg {
+			border-color:#333333;
+	}
+
+#cContent div.ampLine {
+			border-color:#333333;
+	}
+
+#cNumbering a.Select, #cRNumbering a.Select {
+			color: #333333;
+	}
+
+#rssContent .wrapFeedBorder {
+			border-color: #333333;
+	}
+
+/* 방명록 */
+div.opinionList div.cCont_line { 
+			border-bottom-color: #333333;
+	}
+
+div.opinionListBox, div.trackbackSend , div.trackList, div.opinionList div.contReArea, div.opinionList div.contReReArea, div.opinionList div.contModArea, div.opinionList div.contReModArea, div.fileList { 
+			background-color: #F7F7F7;
+	}
+.WebDsumList li, .GalleryList li, .GallerySumList li .imgWrap {
+			border: 1px solid #F7F7F7;
+	}
+
+div.writefrm, .writeTable .contReArea .box { 
+			background-color: #F7F7F7;
+	}
+
+.contPostColorBg {
+			background-color: #333333;
+	}
+
+#cContent .dTitle .titleColor {
+			color:#333333;
+	}
+
+/** Sidebar *******************************************************/
+/* menuTitle */
+.menuBox .menuTitle {
+ 			background-color: transparent;
+							background-image: none; 
+						height: 27px;
+	}
+
+.menuBox .menuTitle h3 { 
+			color: #7E7345;
+				margin-top: 6px;
+	}
+
+.menuTitle input, .menuTitle h3 a, .menuTitle h3 a:link, .menuTitle h3 a:visited, .menuTitle h3 a:hover, .menuTitle h3 a:active { 
+			color: #7E7345;
+	}
+
+/* menuBody */
+.menuBox .menuBody {
+ 			background-color: transparent;
+			background-image: none;
+			background-repeat: repeat-y; 
+	}
+
+/* menuBody fontcolor */
+.menuBody {
+			color: #918553;
+	}
+
+.sideListClr, a.sideListClr:link, a.sideListClr:visited, a.sideListClr:hover, a.sideListClr:active { 
+			color: #918553; 
+	} 
+a.sideListClr:hover { text-decoration:underline; } 
+
+a.d_12_4F4E4A:link, a.d_12_4F4E4A:visited, a.d_12_4F4E4A:hover, a.d_12_4F4E4A:active { /*Only Alarmy*/
+			color: #918553; 
+	} 
+
+#Category div.menuBody li.categoryLine { 
+			border-color: #918553; 
+	}
+
+#Blogzone .line, #Blogzone .menuBody .bar, .alimi .no_noti .noti_line {
+			background-color: #918553; 
+	}
+/* 알리미 */
+.alimi .point, #alimiArticleList .cont .point, #alimiArticleList .cont .point:link, #alimiArticleList .cont .point:hover, #alimiArticleList .cont .point:active  {
+			color:#333333;
+	}
+/* menuBody Align */
+.menuBody {
+			text-align: left;
+	}
+
+/* menuBot */
+.menuBox .menuBot {
+ 			background-color: transparent;
+			background-image: none;
+			height: 0px;
+	}
+
+/* border */
+.menuBox .menuWraper {
+			border-style: none;
+			border-width: 0px;
+			border-color: #000000;
+			border: none !important;
+	} 
+
+/* group */
+.sideBox .menuGroupBg {
+			background-color: #edeff4;
+	}
+
+.sideBox .menuGroupTop {
+			background-image: none;
+			height: 0px;
+	}
+
+.sideBox .menuGroupBg {
+			background-image: none;
+			background-repeat: repeat-y;
+	}
+
+.sideBox .menuGroupBot {
+						background-image: none;
+						height: 0px;
+	}
+
+/* group border */
+
+
+.menuGroupBox  {
+			width: 171px;
+				border-style: none;
+				border-width: 0px;
+					border: none !important;
+	}
+
+.menuGroupBg {
+}
+
+
+
+/* favorite - sidebar */
+.favoTitleColor {
+			color: #333333;
+	}
+.favoPostColor {
+			color: #333333;
+	}
+
+/* calYearList, calMonthList */
+div#Archive div#calYearList { 
+			background-color: #D9D1B4;
+				background-color: transparent;
+	}
+div#Archive div#calMonthList { 
+			background-color: #D9D1B4;
+				background-color: transparent;
+	}
+
+/** Profile *******************************************************/
+/* profile bgcolor */
+#Profile .menuEtcWraper {
+			background-color: transparent; 
+	}
+.profile_edit_inner, .profile_edit_inner .box {
+			background-color: #F7F7F7;
+	}
+
+/* profile top */
+#Profile .menuMain {
+						background-image: none;
+			}
+
+/* profile body */
+#Profile .profileMenuBody {
+						background-image: none;
+						margin-top: 15px; 
+	}
+
+/* profile bottom */
+#Profile .profileMenuBot {
+						background-image: none;
+						height: 15px; 
+	}
+
+/* profile fontcolor */
+.profileColor, a.profileColor:link, a.profileColor:visited, a.profileColor:hover, a.profileColor:active { 
+			color: #918553; 
+	}
+
+.bestBlogLine {
+			 border-top: 1px solid #918553;
+	}
+
+#Profile {
+			text-align: left; 
+	}
+.profile_edit_inner .box {
+			color: #333333;
+	}
+
+/* profile border */ 
+#Profile .menuEtcWraper {
+			border-style: none;
+				border-width: 0px;
+				border-color: #000000;
+				border: none !important;
+	} 
+

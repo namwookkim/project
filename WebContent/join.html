@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="title" content="Nodus">
+<meta name="author" content="박소현" />
+<meta name="keywords" content="mindmap" />
+<meta name="description" content="joinPopUP" />
+<title>회원가입 팝업</title>
+
+<script type = "text/javascript">
+function doExit(){
+  window.close();
+}
+<!--
+var idcheck=false;
+function ID_Chk(){//아이디 중복 체크여부를 판단하는 함수
+  var id = document.getElementById("id");
+  if(id.value.length==0){
+  alert("ID를 입력해주세요");
+  id.focus();
+  return false;
+  }
+  //idchk.jsp에 id값을 pass하여 입력받은 id가 DB에 존재하는지 판단
+  w = window.open("idchk.jsp?id="+id.value,"ID중복확인","width=500, height=300");
+}
+
+function Nick_Chk(){
+  var nick = document.getElementById("name");
+  if(nick.value.length==0){
+  alert("ID를 입력해주세요");
+  nick.focus();
+  return false;
+  }
+
+  w = window.open("nickchk.jsp?name="+nick.value,"닉네임중복확인","width=500, height=300");
+}
+
+
+function Chk_Join_Form(){ //회원가입 양식에 제대로 입력했는지 판단하는 함수
+
+  if(document.getElementById("name").value.length==0){
+    alert("닉네임을 입력해주세요!"); 
+    document.getElementById("name").focus();
+    return false;
+  }else if(document.getElementById("id").value.length==0){
+    alert("아이디를 입력해주세요!"); 
+    document.getElementById("id").focus();
+    return false;
+  }else if((document.getElementById("id").value.indexOf("@") == -1) || (document.getElementById("id").value.indexOf(".") == -1)){
+    alert("아이디가 이메일 형식이 아닙니다!");
+    document.getElementById("id").focus();
+    return false;   
+  }else if(document.getElementById("pwd").value.length==0){
+    alert("비밀번호를 입력해주세요!");
+    document.getElementById("pwd").focus();
+    return false;
+  }else if(document.getElementById("pwd2").value.length == 0){
+    alert("비밀번호를 한번 더 입력해주세요!");
+    document.getElementById("pwd2").focus();
+    return false;
+  }else if(document.getElementById("pwd").value != document.getElementById("pwd2").value){
+    alert("확인 비밀번호가 일치하지 않습니다!");
+    document.getElementById("pwd2").focus();
+    return false;
+  }else if(idcheck == false){
+    alert("아이디 중복확인하세요.");
+    return false; 
+  }else{
+  //조건에 만족할 경우에만 joinform의 action을 수행
+  document.joinform.submit();
+  return true;
+  }
+}
+
+
+-->
+</script>
+<style type="text/css">
+p.first{
+  font-size:12px;
+  font-family:돋움, dotum, verdana, sans-serif;  
+  color: #666666;
+  position: relative;
+  left:30px;}
+.check_button{
+  background:url("./images/checkbutton.png") no-repeat;
+  border:none;
+  width: 72px; height: 23px;
+
+}
+.buttonbox{
+  position:relative;
+  top:5px ;left: 200px;
+}
+.join_button{
+  background:url("./images/join_button.png") no-repeat;
+  border:none;
+  width: 72px; height: 20px;
+
+}
+.exit_button{
+  background:url("./images/exit_button.png") no-repeat;
+  border:none;
+  width: 72px; height: 20px;
+  
+}
+</style>
+</head>
+
+<body>
+  <form method="post" name="joinform" action="join.jsp">  
+    <fieldset style="height:260px">
+    <img src="./images/join_box.png"></br>
+    <img src="./images/bar.png">
+
+    <p class="first"> 아직 Nodus 회원이 아니신가요? </p>
+    <div>
+    <img src="./images/join_email_text.png"><input type="text" id="id" name="id" style="width:150px; height:18px;"/>
+    <input type="button" class="check_button" name="idcheck" onclick="ID_Chk()"/></br>  
+    <img src="./images/join_pwd_text.png"><input type="password" id="pwd" name="pwd" style="width:150px; height:18px;"/></br>
+    <img src="./images/join_repwd_text.png"><input type="password" id="pwd2" name="pwd2" style="width:150px; height:18px;"/></br>
+    <img src="./images/join_nickname.png"><input type="text" id="name" name="name" style="width:150px; height:18px;"/>
+    <input type="button" class="check_button" name="idcheck" onclick="Nick_Chk()"/></br> 
+
+    </div>
+    <div class="buttonbox">
+    <input type="button" class="join_button" onclick="Chk_Join_Form(); return false"/>
+     <input type="button" class="exit_button" onclick="javascript:doExit();"/>
+    </div>
+  </fieldset> 
+  </form> 
+
+</body>
+</html>
