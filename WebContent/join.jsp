@@ -48,7 +48,7 @@ a,img{border: none;	position: relative;top:20px}
 		String DB_SERVER = "localhost:3306";
 		String DB_SERVER_USERNAME = "root";
 		String DB_SERVER_PASSWORD = "tiger";
-		String DB_DATABASE = "test";
+		String DB_DATABASE = "web2012";
 		String JDBC_URL = "jdbc:mysql://" + DB_SERVER + "/" + DB_DATABASE;
 
 		Class.forName("com.mysql.jdbc.Driver");
