@@ -1,4 +1,4 @@
-	 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.sql.*" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -15,6 +15,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8/">
 <title>방 생성</title>
 
+<script type="text/javascript">
+function golib(){
+	window.close();
+	opener.location.href("/library/mindmap_lib.html");
+}
+</script>
 <style type="text/css">
 #join_succ_box{
 	width:350px; height:131px;
@@ -27,7 +33,7 @@
 p.cong{font-size:15px; font-family:돋움, dotum, verdana, sans-serif; text-align: center; color: #000000; font-weight:  bold;
 	position: relative;
 	top:40px;}
-a,img{border: none;	position: relative;top:20px}
+a,img{border: none;	position: relative; top:20px;}
 
 </style>
 </head>
@@ -67,7 +73,6 @@ a,img{border: none;	position: relative;top:20px}
 		pstmt.setBoolean(2, is_public);
 		pstmt.setInt(3, member);
 		pstmt.setString(4, intro);
-		//pstmt.setString(5, "2012-12-09 12:00:00");
 		pstmt.executeUpdate();
 %>
 		<fieldset style="height:260px">
@@ -75,7 +80,11 @@ a,img{border: none;	position: relative;top:20px}
 		<div id="content_line">
 		<div id="join_success">
 		<p class="cong"> "<%=subject%>"방이 생성되었습니다</p>
-		
+		<br/>
+		<br/>
+		<input type="button" name="" value="창 닫기"  Onclick="golib(); return false;" />
+		</div>
+		</div>
 		</div>
 		</fieldset>
 <%
