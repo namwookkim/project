@@ -41,10 +41,10 @@ CREATE TABLE Node (
 );
 
 CREATE TABLE Edge (
+	edge_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	from_id INT NOT NULL,
 	to_id INT NOT NULL,
 	created_at DATETIME NOT NULL
-	CONSTRAINT pk_composite PRIMARY KEY (from_id, to_id)
 );
 
 CREATE TABLE Talk (
