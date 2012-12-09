@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.*;
+import java.io.*;
+import java.sql.*;
 
 /**
  * Servlet implementation class MyServlet
@@ -27,8 +30,20 @@ public class MyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html");
-		response.getWriter().println("Hello World!");
+		try {
+			Class.forName("com.mysql.jdbc.Driver"); /* driver load */
+			response.getWriter().println("Loading complete...");
+			
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/web2012", "web", "tiger");
+			response.getWriter().println("Connect complete...");
+			
+			Statement stmt = conn.createStatement();
+			response.getWriter().println("Statement complete...");
+			
+			stmt.close(); conn.close();
+		} catch(Exception ex) {
+			ex.printStackTrace( response.getWriter() );
+		}
 	}
 
 	/**
