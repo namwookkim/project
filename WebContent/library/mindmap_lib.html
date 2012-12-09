@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Nodus Prototype Demo</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<!--		<style type="text/css">
+			@import "http://keith-wood.name/css/jquery.svg.css";
+		</style> -->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+<!--		<script type="text/javascript" src="http://keith-wood.name/js/jquery.svg.js"></script> -->
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<style type="text/css">
+			.whiteboard {
+				width: 100%;
+				height: 500px;
+				margin: 15px auto;
+				background-color: white;
+				border: 1px solid #cccccc;
+				position: relative;
+				/* hacks for border rounding */
+				-moz-border-radius: 15px;
+				-webkit-border-radius: 15px;
+				-khtml-border-radius: 15px;
+				border-radius: 15px;
+			}
+			.box {
+				background: -moz-linear-gradient(#CEDCEC, #91B2D6);      /* FF 3.6+ */ 
+				background: -ms-linear-gradient(#CEDCEC, #91B2D6);       /* IE10 */ 
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #CEDCEC), color-stop(100%, #91B2D6)); /* Safari 4+, Chrome 2+ */ 
+				background: -webkit-linear-gradient(#CEDCEC, #91B2D6);   /* Safari 5.1+, Chrome 10+ */ 
+				background: -o-linear-gradient(#CEDCEC, #91B2D6);        /* Opera 11.10 */ 
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#CEDCEC', endColorstr='#91B2D6');              /* IE6 & IE7  */ 
+				-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#CEDCEC', endColorstr='#91B2D6')";        /* IE8        */ 
+				background: linear-gradient(#CEDCEC, #91B2D6);           /* the standard */
+
+				-moz-border-radius: 15px;
+				-webkit-border-radius: 15px;
+				-khtml-border-radius: 15px;
+				border-radius: 15px;
+
+				-webkit-box-shadow: 3px 3px 10px #000;
+				-moz-box-shadow: 3px 3px 10px #000;
+				box-shadow: 3px 3px 10px #000;
+			}
+			input#msg {
+				width: 100%;
+			}
+			input#enter_btn {
+				width: 100%;
+			}
+		</style>
+		<script type="text/javascript">
+		<!--
+			var numOfNodes = 0;
+			var nodeArray = new Array();
+			var selectedNode = -1;
+
+			// initialize
+			// 가운데에 메인 노드를 만드는 함수
+			//
+			// * 인자
+			//     - title: 노드의 텍스트
+			//     - description: 자세한 설명 (마우스를 댔을 때 나옴)
+			// * 반환값: 노드 번호 (일반적으로는 1)
+			function initializeNode(title, description) {
+				var newDiv = $(document.createElement("div"));
+				var whiteBoard = $("div.container>div.row>div.span12>div.whiteboard");
+				newDiv.css("width", "100px").css("height", "50px").css("display", "inline-block")
+					.css("position", "absolute").css("left", whiteBoard.width() / 2 - 50).css("top", whiteBoard.height() / 2 - 25).css("z-layer", (1000 + numOfNodes++).toString())
+					.appendTo(whiteBoard).hide().fadeIn("slow").addClass("box").attr("__nodeIndex", numOfNodes).attr("title", description)
+					.draggable( {obstacle: ".box", drag: function(event, ui) {
+								var this_ = $(this);
+								var nodeIndex = this_.attr("__nodeIndex");
+								$("path[__fromNode="+nodeIndex+"]").each(function(key, value) {
+									recalculate(value);
+								});
+								$("path[__toNode="+nodeIndex+"]").each(function(key, value) {
+									recalculate(value);
+								});
+							}} ).click(nodeClicked);
+
+				newDiv.append($("<div style='text-align: center; cursor: default;'>" + numOfNodes.toString() + "<BR />" + title + "</div>"));
+				nodeArray[numOfNodes] = newDiv;
+				return numOfNodes;
+			}
+
+			// addNode
+			// 노드를 추가하는 함수
+			//
+			// * 인자
+			//     - par: 부모 노드 번호
+			//     - title: 노드의 텍스트
+			//     - description: 자세한 설명 (마우스를 댔을 때 나옴)
+			//     - x, y: 좌표
+			// * 반환값: 추가된 노드의 번호 (일반적으로 2 이상)
+			//           (-1이면 오류)
+			function addNode(par, title, description, x, y) {
+				// index validation
+				if(par < 0)
+					return -1;
+
+				if(!nodeArray[par]) {
+					alert("no parent node");
+					return -1;
+				}
+
+				var newDiv = $(document.createElement("div"));
+				var whiteBoard = $("div.container>div.row>div.span12>div.whiteboard");
+				newDiv.css("width", "50px").css("height", "50px").css("display", "inline-block")
+					.css("position", "absolute").css("left", x).css("top", y).css("z-layer", (1000 + numOfNodes++).toString())
+					.appendTo(whiteBoard).hide().fadeIn("slow").addClass("box").attr("__nodeIndex", numOfNodes).attr("title", description)
+					.draggable( {obstacle: ".box", drag: function(event, ui) {
+								var this_ = $(this);
+								var nodeIndex = this_.attr("__nodeIndex");
+								$("path[__fromNode="+nodeIndex+"]").each(function(key, value) {
+									recalculate(value);
+								});
+								$("path[__toNode="+nodeIndex+"]").each(function(key, value) {
+									recalculate(value);
+								});
+							}} ).click(nodeClicked);
+
+				newDiv.append($("<div style='text-align: center; cursor: default;'>" + numOfNodes.toString() + "<BR />" + title + "</div>"));
+				nodeArray[numOfNodes] = newDiv;
+
+				connectTo( par, numOfNodes );
+				return numOfNodes;
+			}
+
+			function connectTo(nodeFrom, nodeTo) {
+				if(nodeArray[nodeFrom] && nodeArray[nodeTo]) {
+					var fromX = parseFloat(nodeArray[nodeFrom].css("left")) + nodeArray[nodeFrom].width()/2.0, fromY = parseFloat(nodeArray[nodeFrom].css("top")) + nodeArray[nodeFrom].height()/2.0;
+					var toX = parseFloat(nodeArray[nodeTo].css("left")) + nodeArray[nodeTo].width()/2.0, toY = parseFloat(nodeArray[nodeTo].css("top")) + nodeArray[nodeTo].height()/2.0;
+
+					var dist = Math.sqrt( Math.pow(fromX - toX, 2) + Math.pow(fromY - toY, 2) );
+					var angle = Math.atan2( toY - fromY, toX - fromX );
+
+					var ourAngle = angle + (Math.PI/180*15);
+					var controlX = fromX + Math.cos(ourAngle) * (dist/2);
+					var controlY = fromY + Math.sin(ourAngle) * (dist/2);
+
+					var circle= makeSVG('path', {d: "M " + fromX + " " + fromY + " Q " + controlX + " " + controlY + " " + toX + " " + toY, stroke: 'navy', 'stroke-width': 2, fill: "none"});
+					$(circle).attr("__fromNode", nodeFrom).attr("__toNode", nodeTo);
+					$("#s").append(circle);
+//							$(circle).animate({svgFillOpacity: 0.25}, 5000);
+				} else {
+					alert("Invalid node number!");
+				}
+			}
+
+			function makeSVG(tag, attrs) {
+				var el= document.createElementNS('http://www.w3.org/2000/svg', tag);
+				for (var k in attrs)
+					el.setAttribute(k, attrs[k]);
+				return el;
+			}
+			
+			function fitContainerSize() {
+				var wb = $("div.whiteboard");
+				var sc = $("div.svg_container");
+				
+				alert( wb.width() );
+				sc.css("width", wb.width() + "px").height("height", wb.height() + "px");
+			}
+
+			function recalculate(pathObject) {
+				fitContainerSize();
+				
+				pathObject = $(pathObject);
+				var nodeFrom = pathObject.attr("__fromNode"), nodeTo = pathObject.attr("__toNode");
+				var fromX = parseFloat(nodeArray[nodeFrom].css("left")) + nodeArray[nodeFrom].width()/2.0, fromY = parseFloat(nodeArray[nodeFrom].css("top")) + nodeArray[nodeFrom].height()/2.0;
+				var toX = parseFloat(nodeArray[nodeTo].css("left")) + nodeArray[nodeTo].width()/2.0, toY = parseFloat(nodeArray[nodeTo].css("top")) + nodeArray[nodeTo].height()/2.0;
+
+				var dist = Math.sqrt( Math.pow(fromX - toX, 2) + Math.pow(fromY - toY, 2) );
+				var angle = Math.atan2( toY - fromY, toX - fromX );
+
+				var ourAngle = angle + (Math.PI/180*15);
+				var controlX = fromX + Math.cos(ourAngle) * (dist/2);
+				var controlY = fromY + Math.sin(ourAngle) * (dist/2);
+
+				pathObject.attr("d", "M " + fromX + " " + fromY + " Q " + controlX + " " + controlY + " " + toX + " " + toY);
+			}
+
+			function disableDefaultRightButton() {
+				try {
+					if(document.attachEvent) { // IE Only
+						document.attachEvent('oncontextmenu', function() {
+							return false;
+						});
+					} else if(document.addEventListener) { // Mozilla platform
+						document.addEventListener('contextmenu', function(e) {
+							e.cancelBubble = true;
+							return false;
+						}, false);
+					}
+					document.oncontextmenu = function() {
+						return false;
+					};
+				} catch(e) { }
+			}
+
+			function nodeClicked() {
+				if(selectedNode > 0) nodeArray[ selectedNode ].css("border", "0");
+				var thisObject = $(this);
+				thisObject.css("border","3px solid blue");
+				selectedNode = thisObject.attr("__nodeIndex");
+			}
+
+			$(function($) {
+				disableDefaultRightButton();
+
+				$("div.whiteboard").dblclick(function(evt) {
+					if(selectedNode > 0) {
+						addNode( selectedNode, "add", "description 2", evt.pageX - $("div.whiteboard").offset().left, evt.pageY - $("div.whiteboard").offset().top );
+					}
+				});
+
+				initializeNode("Main Node", "description");
+			});
+		// -->
+		</script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<div style="margin: 15px auto 0px auto; width: 500px; text-align: center; font-family: Arial; font-weight: bold;">
+						PoC(Proof-of-Concept) code for Nodus
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div class="whiteboard" style="overflow: scroll;">
+						<div id="svg_container" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;">
+							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="s" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
