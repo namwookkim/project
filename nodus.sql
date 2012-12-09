@@ -24,8 +24,9 @@ CREATE TABLE Session (
 );
 
 CREATE TABLE Participant (
-	session_id INT NOT NULL PRIMARY KEY,
-	email VARCHAR(64) NOT NULL PRIMARY KEY,
+	participant_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	session_id INT NOT NULL,
+	email VARCHAR(64) NOT NULL,
 	is_operator BOOLEAN NOT NULL,
 	is_online BOOLEAN NOT NULL,
 	created_at DATETIME NOT NULL
