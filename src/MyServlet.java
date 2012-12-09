@@ -34,7 +34,7 @@ public class MyServlet extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver"); /* driver load */
 			response.getWriter().println("Loading complete...");
 			
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/web2012", "web", "tiger");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/web2012", "web", "asdf");
 			response.getWriter().println("Connect complete...");
 			
 			Statement stmt = conn.createStatement();
